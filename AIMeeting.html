@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek实战工作坊 | AI开发训练营</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', '微软雅黑', sans-serif;
+        }
+
+        body {
+            background: #f8f9ff;
+            line-height: 1.7;
+            color: #2d3748;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            padding: 60px 30px;
+            color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px rgba(37,99,235,0.1);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .content-section {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .curriculum {
+            columns: 2;
+            column-gap: 40px;
+            margin: 30px 0;
+        }
+
+        .curriculum li {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            break-inside: avoid;
+            border-radius: 6px;
+            list-style: none;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .detail-card {
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .detail-card h3 {
+            color: #2563eb;
+            margin: 15px 0;
+        }
+
+        .notice {
+            background: #fff4e6;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #ffd8a8;
+            margin: 40px 0;
+        }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2563eb;
+            color: white;
+            padding: 16px 35px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(37,99,235,0.3);
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-3px);
+            background: #3b82f6;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .curriculum {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>DeepSeek实战工作坊</h1>
+            <p>AI工程开发深度训练营 | 2025年3月19-20日</p>
+        </header>
+
+        <div class="content-section">
+            <h2>课程大纲</h2>
+            <ul class="curriculum">
+                <li>DeepSeek基本应用与核心架构解析</li>
+                <li>R1推理模型原理与调优实践</li>
+                <li>工业级应用场景深度拆解</li>
+                <li>多工具协同工作流设计</li>
+                <li>企业级应用开发实战</li>
+                <li>私有化部署全流程指南</li>
+                <li>本地AI助手开发实战</li>
+                <li>沙箱环境综合项目演练</li>
+            </ul>
+        </div>
+
+        <div class="details-grid">
+            <div class="detail-card">
+                <h3>⏰ 时间安排</h3>
+                <p>3月19-20日<br>每日9:00-17:00</p>
+            </div>
+            <div class="detail-card">
+                <h3>📍 授课地点</h3>
+                <p>具体地址将在报名后<br>通过邮件通知</p>
+            </div>
+            <div class="detail-card">
+                <h3>👥 参与规模</h3>
+                <p>限额30人<br>小班制实战教学</p>
+            </div>
+        </div>
+
+        <div class="notice">
+            <h3>⚠️ 重要准备</h3>
+            <p>• 需自备笔记本电脑（推荐配置：i5+/16G内存）<br>
+               • 具备Python基础及Linux操作经验<br>
+               • 谢绝单纯旁听，需全程参与项目开发<br>
+               • 提供云端开发环境及基础代码库</p>
+        </div>
+
+        <button class="floating-btn">🤖 联系AI小助手报名</button>
+    </div>
+</body>
+</html>
