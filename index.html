@@ -167,6 +167,20 @@
         </div>
 
         <button class="floating-btn">🤖 联系AI小助手报名</button>
+        .floating-btn {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 9999; /* 确保按钮在最上层 */
+}
     </div>
 </body>
         <script>
