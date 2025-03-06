@@ -92,7 +92,6 @@
             margin: 40px 0;
         }
 
-        /* 自定义按钮样式 */
         .floating-btn {
             position: fixed;
             bottom: 30px;
@@ -100,34 +99,17 @@
             background: #2563eb;
             color: white;
             padding: 16px 35px;
-            border-radius: 8px;
+            border-radius: 30px;
             border: none;
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(37,99,235,0.3);
             font-size: 16px;
-            transition: all 0.2s;
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            transition: transform 0.2s;
         }
 
         .floating-btn:hover {
             transform: translateY(-3px);
             background: #3b82f6;
-        }
-
-        /* 隐藏默认按钮 */
-        #dify-chatbot-bubble-button {
-            display: none !important;
-        }
-
-        /* 聊天窗口样式 */
-        #dify-chatbot-bubble-window {
-            width: 24rem !important;
-            height: 40rem !important;
-            bottom: 100px !important;
-            right: 30px !important;
         }
 
         @media (max-width: 768px) {
@@ -136,18 +118,6 @@
             }
             .curriculum {
                 columns: 1;
-            }
-            .floating-btn {
-                right: 15px;
-                bottom: 15px;
-                padding: 12px 20px;
-                font-size: 14px;
-            }
-            #dify-chatbot-bubble-window {
-                width: 100% !important;
-                height: 70vh !important;
-                bottom: 0 !important;
-                right: 0 !important;
             }
         }
     </style>
@@ -196,115 +166,26 @@
                • 提供云端开发环境及基础代码库</p>
         </div>
 
-        <!-- 自定义报名按钮 -->
-        <button class="floating-btn" id="custom-chat-btn">
-            <span>🤖</span>
-            <span>找我报名</span>
-        </button>
+        <button class="floating-btn">🤖 联系AI小助手报名</button>
     </div>
-
-    <!-- Dify 聊天机器人配置 -->
-    <script>
-        window.difyChatbotConfig = {
-            token: '0TtklIH6fGdPWnZR',
-            initCallback: () => console.log('Dify初始化完成') // 初始化完成回调
-        };
-    </script>
-    <script src="https://udify.app/embed.min.js?id=20240510" id="0TtklIH6fGdPWnZR" defer></script>
-
-    <!-- 增强版交互脚本 -->
-    <script>
-        (function() {
-            const MAX_RETRY = 3;
-            let retryCount = 0;
-            const chatButton = document.getElementById('custom-chat-btn');
-            
-            // 状态提示系统
-            const setButtonState = (state = 'default') => {
-                const states = {
-                    loading: { color: '#94a3b8', text: '加载中...' },
-                    error: { color: '#ef4444', text: '服务异常' },
-                    success: { color: '#2563eb', text: '找我报名' }
-                };
-                const { color, text } = states[state] || states.default;
-                chatButton.style.backgroundColor = color;
-                chatButton.innerHTML = `<span>🤖</span><span>${text}</span>`;
-            };
-
-            // 打开聊天窗口
-            const openChat = () => {
-                try {
-                    // 方式1: 使用官方API
-                    if (window.DifyChatbot?.open) {
-                        window.DifyChatbot.open();
-                        return true;
-                    }
-                    
-                    // 方式2: 模拟点击默认按钮
-                    const defaultButton = document.querySelector('#dify-chatbot-bubble-button');
-                    if (defaultButton) {
-                        defaultButton.click();
-                        return true;
-                    }
-                    
-                    return false;
-                } catch (e) {
-                    console.error('打开失败:', e);
-                    return false;
-                }
-            };
-
-            // 点击处理程序
-            const handleClick = () => {
-                if (!openChat()) {
-                    if (retryCount < MAX_RETRY) {
-                        retryCount++;
-                        setButtonState('loading');
-                        setTimeout(() => initDify(), 1000 * retryCount);
-                    } else {
-                        setButtonState('error');
-                    }
-                }
-            };
-
-            // 初始化Dify
-            const initDify = () => {
-                if (!window.difyChatbotConfig) return;
-
-                // 动态加载脚本
-                const script = document.createElement('script');
-                script.src = `https://udify.app/embed.min.js?id=${Date.now()}`;
-                script.defer = true;
-                script.onload = () => setButtonState('success');
-                script.onerror = () => setButtonState('error');
-                document.body.appendChild(script);
-            };
-
-            // 事件绑定
-            document.addEventListener('DOMContentLoaded', () => {
-                // 初始状态
-                setButtonState('loading');
-                
-                // 加载状态监听
-                const observer = new MutationObserver(() => {
-                    if (document.querySelector('#dify-chatbot-bubble-button')) {
-                        setButtonState('success');
-                        observer.disconnect();
-                    }
-                });
-                observer.observe(document.body, { childList: true, subtree: true });
-
-                // 超时处理
-                setTimeout(() => {
-                    if (!document.querySelector('#dify-chatbot-bubble-button')) {
-                        setButtonState('error');
-                    }
-                }, 10000);
-
-                // 点击事件
-                chatButton.addEventListener('click', handleClick);
-            });
-        })();
-    </script>
 </body>
+        <script>
+        window.difyChatbotConfig = {
+         token: '0TtklIH6fGdPWnZR'
+        }
+       </script>
+       <script
+        src="https://udify.app/embed.min.js"
+        id="0TtklIH6fGdPWnZR"
+        defer>
+       </script>
+       <style>
+         #dify-chatbot-bubble-button {
+           background-color: #1C64F2 !important;
+         }
+         #dify-chatbot-bubble-window {
+           width: 24rem !important;
+           height: 40rem !important;
+         }
+       </style>
 </html>
